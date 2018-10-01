@@ -28,7 +28,7 @@ namespace Assignment_2
                 resultList.AddLast(node.StockHolding);
                 node = node.Next;
             }
-
+            // returning final list   
             return resultList;
         }
 
