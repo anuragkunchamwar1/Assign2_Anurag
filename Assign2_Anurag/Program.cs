@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Collections;
-
 namespace Assignment_2
 {
     public partial class StockList
@@ -11,12 +10,24 @@ namespace Assignment_2
         //summary      : merge two different list into a single result list
         //return       : merged list
         //return type  : StockList
-        //nothing      : yes 
         public StockList MergeList(StockList listToMerge)
         {
             StockList resultList = new StockList();
 
             // write your implementation here
+            //merging two lists using the while conditional statement
+            StockNode node = this.head;
+            while (node != null)
+            {
+                resultList.AddLast(node.StockHolding);
+                node = node.Next;
+            }
+            node = listToMerge.head;
+            while (node != null)
+            {
+                resultList.AddLast(node.StockHolding);
+                node = node.Next;
+            }
 
             return resultList;
         }
@@ -29,7 +40,18 @@ namespace Assignment_2
         {
             Stock mostShareStock = null;
 
-            // write your implementation here
+            StockNode stock = this.head;
+            decimal maxHoldings = 0.0m;
+
+            while (stock != null)
+            {
+                if (stock.StockHolding.Holdings > maxHoldings)
+                {
+                    maxHoldings = stock.StockHolding.Holdings;
+                    mostShareStock = stock.StockHolding;
+                }
+                stock = stock.Next;
+            }
 
             return mostShareStock;
         }
@@ -42,8 +64,13 @@ namespace Assignment_2
         {
             int length = 0;
 
-            // write your implementation here
+            StockNode sNode = this.head;
 
+            while (sNode != null)
+            {
+                length++;
+                sNode = sNode.Next;
+            }
             return length;
         }
     }
